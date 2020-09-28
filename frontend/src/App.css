@@ -9,3 +9,8 @@
   font-size: larger;
 }
 
+.spellcard {
+  margin: auto;
+  display: inline-block;
+  padding: 5px;
+}

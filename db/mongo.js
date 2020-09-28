@@ -7,11 +7,11 @@ function connect(locals) {
     
     const uri = process.env.DB_URL
 
-    client = new MongoClient(uri, {useUnifiedTopology=true})
+    client = new MongoClient(uri, {useUnifiedTopology: true})
 
     return client.connect()
     .then(connection => {
-        locals.collectionVideoGames = connection.db('Umis').collection('Spells')
+        locals.collectionSpells = connection.db('Umis').collection('Spells')
     })
     .catch (err => {
         console.log(err)

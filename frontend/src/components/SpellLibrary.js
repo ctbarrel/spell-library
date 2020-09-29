@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 // import Button from 'react-bootstrap/Button'
 import SpellCard from './SpellCard'
+import AddSpellModal from './AddSpellModal'
 
 const API_URL = process.env.REACT_APP_API_URL
 
@@ -28,6 +29,7 @@ export default class extends Component {
         return (
         <div>
             <h1>Spell Library</h1>
+            <AddSpellModal refresh={this.refresh}/><br />
             {displaySpells}
         </div>
     )}

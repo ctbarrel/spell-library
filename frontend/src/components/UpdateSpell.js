@@ -3,15 +3,17 @@ import Button from 'react-bootstrap/Button'
 
 const API_URL = process.env.REACT_APP_API_URL
 
-export default class AddSpell extends Component {
+export default class UpdateSpell extends Component {
 
     constructor(props) {
         super(props)
 
+        const {spell} = props
+
         this.state = {
-            name: '',
-            school: 'Abjuration',
-            level: 0
+            name: spell.name,
+            school: spell.school,
+            level: spell.level
         }
     }
 
@@ -26,21 +28,15 @@ export default class AddSpell extends Component {
     handleSubmit = (event) => {
         event.preventDefault()
 
-        fetch(`${API_URL}spells`, {
-            method: 'POST',
+        fetch(`${API_URL}spells/${this.props.spell._id}`, {
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(this.state)
         })
         .then(this.props.refresh)
-        .then(() => this.setState({
-            name: '',
-            school: 'Abjuration',
-            level: 0
-        }))
-
-
+        .then(this.props.close)
     }   
 
     render() {
@@ -79,7 +75,7 @@ export default class AddSpell extends Component {
                 </span>
 
                 <Button variant="outline-dark"
-                onClick={this.handleSubmit}>Add a Spell</Button>
+                onClick={this.handleSubmit}>Update the Spell</Button>
             </form>
         )
     }

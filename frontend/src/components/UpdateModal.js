@@ -10,9 +10,9 @@ function UpdateModal(props) {
             aria-labelledby="contained-modal-title-vcenter"
             centered
         >
-            <Modal.Header closeButton>Edit {props.spell.name}</Modal.Header>
+            <Modal.Header className='input-form'closeButton>Edit {props.spell.name}</Modal.Header>
             <Modal.Body>
-                <UpdateSpell spell={props.spell} />
+                <UpdateSpell setShow={props.onHide} spell={props.spell} />
             </Modal.Body>
         </Modal>
     );
@@ -23,7 +23,7 @@ export default function UpdateModalButton({spell, refresh}) {
 
     return (
         <>
-            <Button variant="outline-dark" onClick={() => {
+            <Button variant="outline-light" onClick={() => {
                 setModalShow(true)}}>
                 Edit
             </Button>

@@ -10,7 +10,7 @@ function AddSpellModal(props) {
             aria-labelledby="contained-modal-title-vcenter"
             centered
         >
-            <Modal.Header closeButton>Add Spell</Modal.Header>
+            <Modal.Header className='input-form'closeButton>Add Spell</Modal.Header>
             <Modal.Body>
                 <AddSpell />
             </Modal.Body>

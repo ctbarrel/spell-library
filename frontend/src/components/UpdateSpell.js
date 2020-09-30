@@ -21,6 +21,14 @@ export default class UpdateSpell extends Component {
         this.setState({[target.name]: target.value})
     }
     
+    handleDelete = () => {
+        fetch(`${API_URL}spells/${this.props.spell._id}`, {
+            method: 'DELETE'
+        })
+        .then(this.props.setShow)
+        .then(this.props.refresh)
+    }
+    
     handleSelectSchool = (value) => {
         this.setState({school: value})
     }
@@ -35,13 +43,13 @@ export default class UpdateSpell extends Component {
             },
             body: JSON.stringify(this.state)
         })
+        .then(this.props.setShow)
         .then(this.props.refresh)
-        .then(this.props.close)
     }   
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit} className='input-form'>
                 <span className='input-name'>
                 <label htmlFor='name'>Spell Name</label> 
                 <input name='name'
@@ -76,6 +84,7 @@ export default class UpdateSpell extends Component {
 
                 <Button variant="outline-dark"
                 onClick={this.handleSubmit}>Update the Spell</Button>
+                <Button className='deletebutton' variant='outline-danger' onClick={this.handleDelete}>Remove Spell</Button>
             </form>
         )
     }

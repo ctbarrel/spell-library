@@ -45,7 +45,7 @@ export default class AddSpell extends Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit} className='input-form'>
                 <span className='input-name'>
                 <label htmlFor='name'>Spell Name</label> 
                 <input name='name'

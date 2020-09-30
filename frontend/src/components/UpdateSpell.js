@@ -82,6 +82,46 @@ export default class UpdateSpell extends Component {
                 max='9' />
                 </span>
 
+                <span className='oneline casting'>
+                    <label htmlFor='casting'>Casting Time</label>
+                    <select value={this.state.casting}
+                onChange={({target}) => this.handleSelectCasting(target.value)}>
+                    <option value='1 Action'>1 Action</option>
+                    <option value='1 Bonus Action'>1 Bonus Action</option>
+                    <option value='1 Reaction'>1 Reaction</option>
+                    <option value='1 Minute'>1 Minute</option>
+                    <option value='10 Minutes'>10 Minutes</option>
+                    <option value='1 Hour'>1 Hour</option>
+                    <option value='8 Hours'>8 Hours</option>
+                    <option value='12 Hours'>12 Hours</option>
+                    <option value='24 Hours'>24 Hours</option>
+                </select>
+                </span>
+
+                <span className='oneline range'>
+                <label htmlFor='range'>Range</label>
+                <input name='range'
+                value={this.state.range}
+                type='text'
+                onChange={this.handleChange} />
+                </span>
+
+                <span className='oneline duration'>
+                    <label htmlFor='duration'>Duration</label>
+                    <input name='duration'
+                    value={this.state.duration}
+                    type='text'
+                    onChange={this.handleChange} />
+                </span>
+
+                <span className='oneline components'>
+                <label htmlFor='components'>Components</label>
+                <input name='components'
+                value={this.state.components}
+                type='text'
+                onChange={this.handleChange} />
+                </span>
+
                 <Button variant="outline-dark"
                 onClick={this.handleSubmit}>Update the Spell</Button>
                 <Button className='deletebutton' variant='outline-danger' onClick={this.handleDelete}>Remove Spell</Button>

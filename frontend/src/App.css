@@ -31,11 +31,11 @@
   text-align: center;
 }
 
-.input-name {
+.oneline {
   display: block
 }
 
-.input-name input {
+.oneline input {
   width: 75%;
 }
 

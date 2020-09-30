@@ -11,7 +11,11 @@ export default class AddSpell extends Component {
         this.state = {
             name: '',
             school: 'Abjuration',
-            level: 0
+            level: 0,
+            casting: '1 Action',
+            range: '',
+            duration: '',
+            components: ''
         }
     }
 
@@ -21,6 +25,9 @@ export default class AddSpell extends Component {
     
     handleSelectSchool = (value) => {
         this.setState({school: value})
+    }
+    handleSelectCasting = (value) => {
+        this.setState({casting: value})
     }
 
     handleSubmit = (event) => {
@@ -37,7 +44,11 @@ export default class AddSpell extends Component {
         .then(() => this.setState({
             name: '',
             school: 'Abjuration',
-            level: 0
+            level: 0,
+            casting: '1 Action',
+            range: '',
+            duration: '',
+            components: ''
         }))
 
 
@@ -46,7 +57,7 @@ export default class AddSpell extends Component {
     render() {
         return (
             <form onSubmit={this.handleSubmit} className='input-form'>
-                <span className='input-name'>
+                <span className='oneline name'>
                 <label htmlFor='name'>Spell Name</label> 
                 <input name='name'
                 value={this.state.name}
@@ -54,7 +65,7 @@ export default class AddSpell extends Component {
                 onChange={this.handleChange} />
                 </span>
 
-                <span className='input-school'>
+                <span className='school'>
                 <label htmlFor='school'>School of Magic</label>
                 <select value={this.state.school}
                 onChange={({target}) => this.handleSelectSchool(target.value)}>
@@ -69,13 +80,54 @@ export default class AddSpell extends Component {
                 </select>
                 </span>
 
-                <span className='input-level'>
+                <span className='level'>
                 <label htmlFor='level'>Spell Level</label>
                 <input name='level'
                 value={this.state.level}
                 type='number' 
                 onChange={this.handleChange}
-                max='9' />
+                max='9'
+                min='0' />
+                </span>
+
+                <span className='oneline casting'>
+                    <label htmlFor='casting'>Casting Time</label>
+                    <select value={this.state.casting}
+                onChange={({target}) => this.handleSelectCasting(target.value)}>
+                    <option value='1 Action'>1 Action</option>
+                    <option value='1 Bonus Action'>1 Bonus Action</option>
+                    <option value='1 Reaction'>1 Reaction</option>
+                    <option value='1 Minute'>1 Minute</option>
+                    <option value='10 Minutes'>10 Minutes</option>
+                    <option value='1 Hour'>1 Hour</option>
+                    <option value='8 Hours'>8 Hours</option>
+                    <option value='12 Hours'>12 Hours</option>
+                    <option value='24 Hours'>24 Hours</option>
+                </select>
+                </span>
+
+                <span className='oneline range'>
+                <label htmlFor='range'>Range</label>
+                <input name='range'
+                value={this.state.range}
+                type='text'
+                onChange={this.handleChange} />
+                </span>
+
+                <span className='oneline duration'>
+                    <label htmlFor='duration'>Duration</label>
+                    <input name='duration'
+                    value={this.state.duration}
+                    type='text'
+                    onChange={this.handleChange} />
+                </span>
+
+                <span className='oneline components'>
+                <label htmlFor='components'>Components</label>
+                <input name='components'
+                value={this.state.components}
+                type='text'
+                onChange={this.handleChange} />
                 </span>
 
                 <Button variant="outline-dark"

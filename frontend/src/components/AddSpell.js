@@ -10,9 +10,9 @@ export default class AddSpell extends Component {
 
         this.state = {
             name: '',
-            school: 'Abjuration',
+            school: '',
             level: 0,
-            casting: '1 Action',
+            casting: '',
             range: '',
             duration: '',
             components: ''
@@ -33,6 +33,9 @@ export default class AddSpell extends Component {
     handleSubmit = (event) => {
         event.preventDefault()
 
+        if(this.state.casting != '') {
+            if(this.state.school != '') {
+        
         fetch(`${API_URL}spells`, {
             method: 'POST',
             headers: {
@@ -43,14 +46,14 @@ export default class AddSpell extends Component {
             .then(this.props.refresh)
             .then(() => this.setState({
                 name: '',
-                school: 'Abjuration',
+                school: '',
                 level: 0,
-                casting: '1 Action',
+                casting: '',
                 range: '',
                 duration: '',
                 components: ''
             }))
-
+        }}
 
     }
 
@@ -69,6 +72,7 @@ export default class AddSpell extends Component {
                     <label htmlFor='school'>School of Magic</label>
                     <select value={this.state.school}
                         onChange={({ target }) => this.handleSelectSchool(target.value)}>
+                        <option disabled value=''>Choose One</option>
                         <option value='Abjuration'>Abjuration</option>
                         <option value='Conjuration'>Conjuration</option>
                         <option value='Divination'>Divination</option>
@@ -94,6 +98,7 @@ export default class AddSpell extends Component {
                     <label htmlFor='casting'>Casting Time</label>
                     <select value={this.state.casting}
                         onChange={({ target }) => this.handleSelectCasting(target.value)}>
+                        <option disabled value=''>Choose One</option>
                         <option value='1 Action'>1 Action</option>
                         <option value='1 Bonus Action'>1 Bonus Action</option>
                         <option value='1 Reaction'>1 Reaction</option>

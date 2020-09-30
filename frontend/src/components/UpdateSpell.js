@@ -13,7 +13,12 @@ export default class UpdateSpell extends Component {
         this.state = {
             name: spell.name,
             school: spell.school,
-            level: spell.level
+            level: spell.level,
+            casting: spell.casting,
+            range: spell.range,
+            duration: spell.duration,
+            components: spell.components,
+            description: spell.description
         }
     }
 
@@ -31,6 +36,9 @@ export default class UpdateSpell extends Component {
 
     handleSelectSchool = (value) => {
         this.setState({ school: value })
+    }
+    handleSelectCasting = (value) => {
+        this.setState({casting: value})
     }
 
     handleSubmit = (event) => {
@@ -86,6 +94,7 @@ export default class UpdateSpell extends Component {
                     <label htmlFor='casting'>Casting Time</label>
                     <select value={this.state.casting}
                         onChange={({ target }) => this.handleSelectCasting(target.value)}>
+                        <option disable value=''>Choose Casting Time</option>
                         <option value='1 Action'>1 Action</option>
                         <option value='1 Bonus Action'>1 Bonus Action</option>
                         <option value='1 Reaction'>1 Reaction</option>

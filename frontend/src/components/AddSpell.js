@@ -33,8 +33,8 @@ export default class AddSpell extends Component {
     handleSubmit = (event) => {
         event.preventDefault()
 
-        if(this.state.casting != '') {
-            if(this.state.school != '') {
+        if(this.state.casting !== '') {
+            if(this.state.school !== '') {
         
         fetch(`${API_URL}spells`, {
             method: 'POST',
@@ -43,6 +43,7 @@ export default class AddSpell extends Component {
             },
             body: JSON.stringify(this.state)
         })
+            .then()
             .then(this.props.refresh)
             .then(() => this.setState({
                 name: '',

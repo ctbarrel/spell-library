@@ -52,7 +52,8 @@ export default class AddSpell extends Component {
                 casting: '',
                 range: '',
                 duration: '',
-                components: ''
+                components: '',
+                description: ''
             }))
         }}
 

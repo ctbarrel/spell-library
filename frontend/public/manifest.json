@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Umis",
+  "name": "The Library of Umis",
+  "description": "A fan-made digital spell list for DnD 5e",
   "icons": [
     {
       "src": "favicon.ico",
@@ -10,6 +11,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "powderblue",
+  "background_color": "tan"
 }

@@ -61,4 +61,19 @@ router.put('/:id', function (req, res, next) {
     })
 })
 
+router.patch('/:id', function (req, res, next) {
+    const info = {
+        id: req.params.id,
+        doc: req.body,
+        collection: req.app.locals.collectionSpells
+    }
+    db.changeOne(info)
+    .then(data => {
+        res.json('toggled ritual')
+    })
+    .catch(err => {
+        console.log(err)
+    })
+})
+
 module.exports = router;

@@ -40,7 +40,7 @@ function replaceOne(info) {
 }
 
 function changeOne(info) {
-    return info.collection.findOneAndUpdate(info.query, {$set: info.doc})
+    return info.collection.findOneAndUpdate({_id: ObjectID(info.id)}, {$set: info.doc})
 }
 
 function deleteOne(info) {

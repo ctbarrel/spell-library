@@ -20,7 +20,7 @@ function connect(locals) {
 }
 
 function readAll(info) {
-    return info.collection.find(info.query).sort({name: 1}).toArray()
+    return info.collection.find(info.query).toArray()
 }
 
 function createOne(info) {

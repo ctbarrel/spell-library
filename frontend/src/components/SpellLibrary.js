@@ -8,27 +8,43 @@ const API_URL = process.env.REACT_APP_API_URL
 
 export default class extends Component {
 
-    state = { spells: [], viewport: 'all' }
-
+    state = { spells: [], viewport: 'all'}
+    
     refresh = () => {
         fetch(`${API_URL}spells`)
             .then(response => response.json())
-            .then(spells => this.setState({ spells }))
+            .then(spells => this.setState({spells}))
     }
 
     handleViewport = (levelView) => {
         this.setState({ viewport: levelView})
         this.refresh()
-        console.log(this.state.viewport)
+        // console.log('Viewport: ' + this.state.viewport)
     }
 
     componentDidMount() {
         this.refresh()
     }
 
+
     render() {
 
-        const displaySpells = this.state.spells.map(
+        let bubbleSort = () => {
+            
+            var spellArray = this.state.spells.map((x) => x)
+
+            for (let loopCount=0; loopCount < spellArray.length; loopCount++) {
+                for (let pairStart=0; pairStart < spellArray.length-1-loopCount; pairStart++) {
+                    if (spellArray[pairStart+1].name < spellArray[pairStart].name) {
+                        [spellArray[pairStart + 1], spellArray[pairStart]] = [spellArray[pairStart], spellArray[pairStart + 1]]
+                    }
+                }
+            }
+
+            return spellArray
+        }
+
+        let displaySpells = bubbleSort().map(
             spell => {
                 if (this.state.viewport === 'all' || this.state.viewport === spell.level.toString()) {
                     return (

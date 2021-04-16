@@ -35,7 +35,7 @@ export default class extends Component {
 
             for (let loopCount=0; loopCount < spellArray.length; loopCount++) {
                 for (let pairStart=0; pairStart < spellArray.length-1-loopCount; pairStart++) {
-                    if (spellArray[pairStart+1].name < spellArray[pairStart].name) {
+                    if (spellArray[pairStart+1].name.toLowerCase() < spellArray[pairStart].name.toLowerCase()) {
                         [spellArray[pairStart + 1], spellArray[pairStart]] = [spellArray[pairStart], spellArray[pairStart + 1]]
                     }
                 }
